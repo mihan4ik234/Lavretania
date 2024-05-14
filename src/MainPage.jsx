@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './MainPage.css';
 import firstphoto from './assets/main.png';
+import { NavLink } from 'react-router-dom';
 import slide1 from './assets/image2.png';
 import slide2 from './assets/image3.png';
 import slide3 from './assets/image4.png';
@@ -34,34 +35,19 @@ function MainPage() {
                     <p id='gamecenter'>Игровой центр<br />развлечений</p>
                     <p id='opisgamecenter'>На одном пространстве собраны активные <br /> игры, интеллектуальные квесты и залы для<br />мероприятий.<br />Организуйте идеальный праздник!</p>
                     <div className='bt'>
-                        <p id='yellowbt'>Заказать праздник</p>
+                        <NavLink to="/allgames"><p id='yellowbt'>Заказать праздник</p></NavLink>
                     </div>
                 </div>
                 <div className='block2'>
                     <img id='firstphoto' src={firstphoto} alt="Gamecenter" />
                 </div>
             </div>
-            <div className='entertainment'>
-                <div className='Slider'>
-                    <Slider {...sliderSettings}>
-                        <div>
-                            <img id='slide' src={slide1} alt="фото1" />
-                        </div>
-                        <div>
-                            <img id='slide' src={slide1} alt="фото2" />
-                        </div>
-                        <div>
-                            <img id='slide' src={slide1} alt="фото3" />
-                        </div>
-                    </Slider>
-                </div>
-            </div>
             <div className='NEW'>
                 <p id='new'>Новинка</p>
-                <img id="new-img" src={NEW} alt="New" />
+                <NavLink to="/allgames"><img id="new-img" src={NEW} alt="New" /></NavLink>
             </div>
             <Form></Form>
-           <div className="discounts">
+            <div className="discounts">
                 <h2>Скидки и акции</h2>
                 <div className="discountBlock">
                     <div className="discountCard">
@@ -69,25 +55,24 @@ function MainPage() {
                         <p>С Днем Рождения!</p>
                         <img src={Tort} alt="Birthday" />
                         <p>В будние дни отмечать<br />праздник выгоднее!</p>
-                        <button>Подробнее</button>
+                        <NavLink to="/gift"><button>Подробнее</button></NavLink>
                     </div>
                     <div className="discountCard">
                         <div className="diagonal"></div>
                         <p>С друзьями выгодней!</p>
                         <img src={Rabbit} alt="Birthday" />
                         <p>Скидка 10% за <br />рекомендацию</p>
-                        <button>Подробнее</button>
+                        <NavLink to="/gift"><button>Подробнее</button></NavLink>
                     </div>
                     <div className="discountCard">
                         <div className="diagonal"></div>
                         <p>С Днем Рождения!</p>
                         <img src={Tort} alt="Birthday" />
                         <p>Закажите у нас торт<br />на день рождения!</p>
-                        <button>Подробнее</button>
+                        <NavLink to="/gift"><button>Подробнее</button></NavLink>
                     </div>
                 </div>
             </div>
-            <Footer/>
         </>
     )
 }

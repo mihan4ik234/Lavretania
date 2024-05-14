@@ -2,9 +2,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
-import Map from './Map';
 import Allgames from './Allgames';
-import Gift from './Gift';
+import Gift from './Gift.jsx';
 import Gallery from './Gallery';
 import Contact from './Contact';
 import Header from './Header';
@@ -16,7 +15,6 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/map" element={<Map />} />
         <Route path="/allgames" element={<Allgames />} />
         <Route path="/gift" element={<Gift />} />
         <Route path="/gallery" element={<Gallery />} />
