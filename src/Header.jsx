@@ -36,7 +36,7 @@ function Header() {
             <div className='whiteblock'>
                 <NavLink to="/allgames">Все<br /> развлечения</NavLink>
                 <NavLink to="/allgames">Детские <br/> праздники</NavLink>
-                <NavLink to="/gift">Подарочные <br/>карты</NavLink>
+                <NavLink to="/gift">Акции</NavLink>
                 <NavLink to="/gallery">Галерея</NavLink>
             </div>
         </>

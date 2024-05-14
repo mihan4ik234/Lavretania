@@ -38,8 +38,7 @@ function Footer() {
                 <div className="column">
                     <p className="columnTitle">Клиентам</p>
                     <Link to="/">Главная</Link> {/* Добавление ссылки */}
-                    <Link to="/">Скидки и акции</Link> {/* Добавление ссылки */}
-                    <Link to="/gift">Подарочный сертификат</Link> {/* Добавление ссылки */}
+                    <Link to="/gift">Акции</Link> {/* Добавление ссылки */}
                 </div>
                 <div className="column">
                     <p className="columnTitle">Услуги</p>
