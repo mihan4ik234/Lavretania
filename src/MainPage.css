@@ -1,5 +1,6 @@
 /* MainPage.css */
 
+/* Стили для блока Gamecentr */
 .Gamecentr {
     padding-top: 2%;
     display: flex;
@@ -62,14 +63,13 @@
     height: 544px;
 }
 
-/* Добавленные стили для красивых стрелок */
+/* Стили для слайдера */
 .Slider {
-    padding: 0; /* Убираем отступы для слайдера */
+    padding: 0;
 }
 
-
 .Slider div img {
-    width: 300px; /* Устанавливаем ширину каждой фотографии внутри блока */
+    width: 300px;
 }
 
 .slick-prev,
@@ -101,8 +101,9 @@
     right: 10px;
 }
 
-/* Media Queries для адаптивного дизайна */
+/* Медиа запросы для адаптивного дизайна */
 @media (max-width: 768px) {
+
     .block1,
     .block2 {
         width: 100%;
@@ -119,5 +120,127 @@
 
     #opisgamecenter {
         font-size: 16px;
+    }
+
+    /* Отображение только одной фотографии в слайдере для блока entertainment на мобильных устройствах */
+    .Slider div {
+        display: none;
+    }
+    .Slider div.slick-active {
+        display: block;
+    }
+}
+
+/* Стили для блока entertainment */
+.entertainment {
+    background-color: #F2F2F2;
+}
+
+/* Стили для блока NEW */
+.NEW {
+    display: grid;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+#new {
+    display: flex;
+    justify-content: center;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 40px;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: #1e212b;
+}
+
+/* Дополнительные стили для нового блока */
+.discounts {
+    text-align: center;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.discountBlock {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.discountCard {
+    border: 5px solid #fff;
+    border-radius: 39px;
+    width: 360px;
+    height: 536px;
+    box-shadow: 0 0 15px 0 rgba(41, 48, 55, 0.5);
+    background: #9f5bad;
+    padding: 20px;
+    position: relative;
+    margin-bottom: 40px; /* Добавлено для отступа между блоками в мобильной версии */
+}
+
+.diagonal {
+    width: 397px;
+    height: 77px;
+    background: url("path_to_image");
+    transform: rotate(29deg);
+    position: absolute;
+    top: -20px;
+    left: -20px;
+}
+
+.discountCard p {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 32px;
+    text-align: center;
+    color: #fff;
+}
+
+.discountCard img {
+    width: 192px;
+    height: 240px;
+    margin: 20px auto;
+    display: block;
+}
+
+.discountCard button {
+    border-radius: 44px;
+    width: 290px;
+    height: 51px;
+    box-shadow: 0 2px 12px 0 rgba(56, 72, 95, 0.49);
+    background: #fff;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 130%;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fe5e00;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Медиа запросы для адаптивного дизайна */
+@media (max-width: 768px) {
+    .discountCard {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .discountCard img {
+        width: 50%;
+        height: auto;
+    }
+
+    #new-img {
+        width: 80%;
+        height: auto;
     }
 }

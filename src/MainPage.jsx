@@ -8,6 +8,12 @@ import firstphoto from './assets/main.png';
 import slide1 from './assets/image2.png';
 import slide2 from './assets/image3.png';
 import slide3 from './assets/image4.png';
+import NEW from './assets/Background.png';
+import Background from './assets/Background1.png'
+import Form from './form';
+import Tort from './assets/tort.png'
+import Rabbit from './assets/rabbit.png'
+import Footer from './Footer';
 
 function MainPage() {
     const [count, setCount] = useState(0);
@@ -17,7 +23,7 @@ function MainPage() {
         arrows: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3, // Количество отображаемых слайдов (изменено на 3)
+        slidesToShow: 3,
         slidesToScroll: 1
     };
 
@@ -32,24 +38,56 @@ function MainPage() {
                     </div>
                 </div>
                 <div className='block2'>
-                    <img id='firstphoto' src={firstphoto} />
+                    <img id='firstphoto' src={firstphoto} alt="Gamecenter" />
                 </div>
             </div>
             <div className='entertainment'>
                 <div className='Slider'>
-                <Slider {...sliderSettings}>
-                    <div>
-                        <img id='slide' src={slide1} alt="фото1"/>
-                    </div>
-                    <div>
-                        <img id='slide' src={slide2} alt="фото2"/>
-                    </div>
-                    <div>
-                        <img id='slide' src={slide3} alt="фото3"/>
-                    </div>
-                </Slider>
+                    <Slider {...sliderSettings}>
+                        <div>
+                            <img id='slide' src={slide1} alt="фото1" />
+                        </div>
+                        <div>
+                            <img id='slide' src={slide2} alt="фото2" />
+                        </div>
+                        <div>
+                            <img id='slide' src={slide3} alt="фото3" />
+                        </div>
+                    </Slider>
                 </div>
             </div>
+            <div className='NEW'>
+                <p id='new'>Новинка</p>
+                <img id="new-img" src={NEW} alt="New" />
+            </div>
+            <Form></Form>
+           <div className="discounts">
+                <h2>Скидки и акции</h2>
+                <div className="discountBlock">
+                    <div className="discountCard">
+                        <div className="diagonal"></div>
+                        <p>С Днем Рождения!</p>
+                        <img src={Tort} alt="Birthday" />
+                        <p>В будние дни отмечать<br />праздник выгоднее!</p>
+                        <button>Подробнее</button>
+                    </div>
+                    <div className="discountCard">
+                        <div className="diagonal"></div>
+                        <p>С друзьями выгодней!</p>
+                        <img src={Rabbit} alt="Birthday" />
+                        <p>Скидка 10% за <br />рекомендацию</p>
+                        <button>Подробнее</button>
+                    </div>
+                    <div className="discountCard">
+                        <div className="diagonal"></div>
+                        <p>С Днем Рождения!</p>
+                        <img src={Tort} alt="Birthday" />
+                        <p>Закажите у нас торт<br />на день рождения!</p>
+                        <button>Подробнее</button>
+                    </div>
+                </div>
+            </div>
+            <Footer/>
         </>
     )
 }
