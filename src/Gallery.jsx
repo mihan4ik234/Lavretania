@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Map = () => {
+const Gallery = () => {
   // Ваш компонент Contact
 }
 
-export default Map;
+export default Gallery;

@@ -1,5 +1,9 @@
 /* form.css */
-
+a {
+    color: inherit; /* Сохраняет цвет текста, определенный родительским элементом */
+    text-decoration: none; /* Убирает подчёркивание */
+    cursor: pointer; /* Добавляет курсор указателя при наведении */
+}
 /* Стили для блока booking */
 .booking {
     display: flex;

@@ -9,8 +9,10 @@
 }
 
 .ALLcontent {
-    width: 60%; /* Ширина контейнера для всего содержимого */
-    margin: auto; /* Центрирование контейнера */
+    width: 60%;
+    /* Ширина контейнера для всего содержимого */
+    margin: auto;
+    /* Центрирование контейнера */
 }
 
 .locationTitle {
@@ -19,7 +21,17 @@
     font-size: 40px;
     letter-spacing: 0.01em;
     color: #1e212b;
-    margin-bottom: 20px; /* Отступ между заголовком и контактной информацией */
+    margin-bottom: 20px;
+    /* Отступ между заголовком и контактной информацией */
+}
+
+a {
+    color: inherit;
+    /* Сохраняет цвет текста, определенный родительским элементом */
+    text-decoration: none;
+    /* Убирает подчёркивание */
+    cursor: pointer;
+    /* Добавляет курсор указателя при наведении */
 }
 
 .contactInfo {
@@ -66,14 +78,16 @@
     text-transform: uppercase;
     text-align: center;
     color: #fff;
-    margin-bottom: 40px; /* Отступ между контактной информацией и кнопкой */
+    margin-bottom: 40px;
+    /* Отступ между контактной информацией и кнопкой */
 }
 
 .footerColumns {
     gap: 20px;
     display: flex;
     justify-content: space-around;
-    align-items: flex-start; /* Выравнивание по верхнему краю */
+    align-items: flex-start;
+    /* Выравнивание по верхнему краю */
     margin-top: 40px;
 }
 
@@ -96,7 +110,8 @@
 .socialNetworks {
     margin-top: 40px;
     display: flex;
-    justify-content: center; /* Центрирование социальных сетей */
+    justify-content: center;
+    /* Центрирование социальных сетей */
     align-items: center;
 }
 
@@ -113,9 +128,11 @@
 .legalInfo {
     margin-top: 40px;
     display: flex;
-    justify-content: center; /* Центрирование текста */
+    justify-content: center;
+    /* Центрирование текста */
     align-items: center;
-    flex-wrap: wrap; /* Перенос на новую строку, если не помещается */
+    flex-wrap: wrap;
+    /* Перенос на новую строку, если не помещается */
 }
 
 .legalInfo p {
@@ -125,7 +142,8 @@
     line-height: 115%;
     letter-spacing: 0.01em;
     color: #fff;
-    margin-right: 20px; /* Отступ между элементами */
+    margin-right: 20px;
+    /* Отступ между элементами */
 }
 
 .copyright {

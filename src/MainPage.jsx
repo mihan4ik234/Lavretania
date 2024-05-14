@@ -48,10 +48,10 @@ function MainPage() {
                             <img id='slide' src={slide1} alt="фото1" />
                         </div>
                         <div>
-                            <img id='slide' src={slide2} alt="фото2" />
+                            <img id='slide' src={slide1} alt="фото2" />
                         </div>
                         <div>
-                            <img id='slide' src={slide3} alt="фото3" />
+                            <img id='slide' src={slide1} alt="фото3" />
                         </div>
                     </Slider>
                 </div>

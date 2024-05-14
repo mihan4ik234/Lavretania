@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Map = () => {
+const Gift = () => {
   // Ваш компонент Contact
 }
 
-export default Map;
+export default Gift;
