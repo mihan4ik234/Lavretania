@@ -1,24 +1,23 @@
 /* Allgames.css */
 .gamesGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 140px); /* 3 columns each with width of 140px */
-    grid-template-rows: repeat(2, 168px); /* 2 rows each with height of 168px */
-    grid-gap: 10px; /* Gap between grid items */
-  }
-  
-  .gamePhotoContainer {
-    width: 140px;
-    height: 168px;
-    overflow: hidden;
-  }
-  
-  .gamePhotoContainer img {
-    width: 100%;
-    height: auto;
-    transition: transform 0.3s; /* Smooth transition for scaling */
-  }
-  
-  .gamePhotoContainer img:hover {
-    transform: scale(1.1); /* Scale image up by 10% on hover */
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  grid-template-rows: repeat(2, 50%);
+  grid-gap: 10px;
+}
+
+.gamePhotoContainer {
+  width: 140px;
+  height: 168px;
+  overflow: hidden;
+}
+
+.gamePhotoContainer img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s; /* Smooth transition for scaling */
+}
+
+.gamePhotoContainer img:hover {
+  transform: scale(1.1); /* Scale image up by 10% on hover */
+}

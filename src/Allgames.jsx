@@ -1,9 +1,8 @@
 // Allgames.jsx
-import React from 'react';
-import './Allgames.css'; // Import the CSS file
-import GamePhoto from './GamePhoto'; // Import the GamePhoto component
-import photo1 from './assets/photo1.png'; // Import the image file
-
+import React from "react";
+import "./Allgames.css"; // Import the CSS file
+import GamePhoto from "./GamePhoto"; // Import the GamePhoto component
+import photo1 from "./assets/photo1.png"; // Import the image file
 
 const Allgames = () => {
   return (
@@ -20,6 +19,6 @@ const Allgames = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Allgames;
