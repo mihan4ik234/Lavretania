@@ -113,6 +113,12 @@
     position: relative; /* Добавлено для позиционирования псевдоэлементов */
 }
 
+
+.whiteblock button {
+    background-color: rgb(255, 161, 161);
+    border-radius: 30px;
+}
+
 .whiteblock p {
     margin: 0; /* Убираем внешние отступы у параграфов */
 }
@@ -152,12 +158,13 @@
 
 /* Стили для кнопки "Обратный звонок" */
 #phone {
+    background-color: white;
     border: none;
     background: none;
     cursor: pointer;
     display: flex;
     align-items: center;
-    color: #fe5e00;
+    color: #ffffff;
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 16px;

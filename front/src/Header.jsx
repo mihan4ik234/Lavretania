@@ -6,7 +6,7 @@ import phone from './assets/phone.png';
 import vk from './assets/vk.png';
 import adress from './assets/adress.png';
 
-function Header() {
+function Header({ isAuthenticated, logout }) { // Добавлены пропсы для состояния аутентификации и функции выхода
     const [showModal, setShowModal] = useState(false);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [question, setQuestion] = useState('');
@@ -68,6 +68,12 @@ function Header() {
                 <NavLink to="/allgames">Детские <br/> праздники</NavLink>
                 <NavLink to="/gift">Акции</NavLink>
                 <NavLink to="/gallery">Галерея</NavLink>
+                {/* Условное отображение ссылки на авторизацию или кнопки выхода */}
+                {isAuthenticated ? (
+                    <button onClick={logout}>Выйти</button>
+                ) : (
+                    <NavLink to= '/login'>Авторизация</NavLink>
+                )}
             </div>
 
             {showModal && (
@@ -77,9 +83,9 @@ function Header() {
                         <h2>Обратный звонок</h2>
                         <form onSubmit={handleSubmit}>
                             <label htmlFor="phone">Номер телефона:</label>
-                            <input type="text" id="question" value={phoneNumber} onChange={handlePhoneChange} required />
-                            <label htmlFor="question">Краткая информация вопроса:</label>
-                            <textarea id="question" value={question} onChange={handleQuestionChange} required />
+                            <input type="text" id="phone" value={phoneNumber} onChange={handlePhoneChange} required />
+                            <label htmlFor="message">Краткая информация вопроса:</label>
+                            <textarea id="message" value={question} onChange={handleQuestionChange} required />
                             <button type="submit">Отправить</button>
                         </form>
                     </div>

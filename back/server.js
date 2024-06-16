@@ -1,12 +1,21 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const { Pool } = require('pg');
-const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 const port = 3000;
+
+// Настройки CORS
+const corsOptions = {
+  origin: 'http://localhost:5173', // Замените на URL вашего фронтенда
+  optionsSuccessStatus: 200
+};
+
+// Использование CORS с указанными настройками
+app.use(cors(corsOptions));
+app.use(express.json()); // express.json() используется вместо bodyParser.json() в новых версиях Express
 
 const secretKey = 'ananasik12345678'; // Замените на свой секретный ключ
 
@@ -19,23 +28,15 @@ const pool = new Pool({
   port: 5432,
 });
 
-// Создание таблицы пользователей
-const createUsersTableQuery = `
+// Создание таблиц пользователей, форм отправки и обратной связи
+const createTablesQueries = `
   CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     birthdate DATE NOT NULL,
     password VARCHAR(255) NOT NULL
-  )
-`;
-
-pool.query(createUsersTableQuery)
-  .then(() => console.log('Users table created or verified'))
-  .catch(err => console.error('Error creating users table:', err));
-
-// Создание таблицы для форм отправки
-const createSubmissionFormTableQuery = `
+  );
   CREATE TABLE IF NOT EXISTS submission_form (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -43,27 +44,21 @@ const createSubmissionFormTableQuery = `
     email VARCHAR(255) NOT NULL,
     date DATE NOT NULL,
     wishes TEXT
-  )
-`;
-
-pool.query(createSubmissionFormTableQuery)
-  .then(() => console.log('Submission form table created or verified'))
-  .catch(err => console.error('Error creating submission form table:', err));
-
-// Создание таблицы для обратной связи
-const createFeedbackTableQuery = `
+  );
   CREATE TABLE IF NOT EXISTS feedback (
     id SERIAL PRIMARY KEY,
     phone VARCHAR(20) NOT NULL,
     message TEXT
-  )
+  );
 `;
 
-pool.query(createUsersTableQuery)
-  .then(() => console.log('Users table created or verified'))
-  .catch(err => console.error('Error creating users table:', err));
+pool.query(createTablesQueries)
+  .then(() => console.log('Tables created or verified successfully'))
+  .catch(err => console.error('Error creating tables:', err));
 
-// Эндпоинт для регистрации
+// Эндпоинты
+
+// Регистрация
 app.post('/register', async (req, res) => {
   try {
     const { name, email, birthdate, password } = req.body;
@@ -73,41 +68,66 @@ app.post('/register', async (req, res) => {
       VALUES ($1, $2, $3, $4)
     `;
     await pool.query(insertQuery, [name, email, birthdate, hashedPassword]);
-    res.status(200).send('Registration successful');
+    res.json({ message: 'Registration successful' });
   } catch (error) {
     console.error('Error registering user:', error);
-    res.status(500).send('An error occurred during registration');
+    res.status(500).json({ message: 'An error occurred during registration' });
   }
 });
 
-// Эндпоинт для авторизации
+// Авторизация
 app.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log('Login attempt with email:', email); // Логируем email для проверки
-
-    const selectQuery = `
-      SELECT * FROM users WHERE email = $1
-    `;
+    const selectQuery = 'SELECT * FROM users WHERE email = $1';
     const result = await pool.query(selectQuery, [email]);
-
     if (result.rows.length > 0) {
       const user = result.rows[0];
       const isValidPassword = await bcrypt.compare(password, user.password);
       if (isValidPassword) {
         const token = jwt.sign({ userId: user.id }, secretKey, { expiresIn: '1h' });
-        res.status(200).json({ token });
+        res.json({ token });
       } else {
-        console.log('Invalid password for email:', email); // Логируем ошибку
-        res.status(401).send('Invalid email or password');
+        res.status(401).json({ message: 'Invalid email or password' });
       }
     } else {
-      console.log('Email not found:', email); // Логируем ошибку
-      res.status(401).send('Invalid email or password');
+      res.status(401).json({ message: 'Invalid email or password' });
     }
   } catch (error) {
     console.error('Error logging in:', error);
-    res.status(500).send('An error occurred during login');
+    res.status(500).json({ message: 'An error occurred during login' });
+  }
+});
+
+// Отправка формы
+app.post('/submit-form', async (req, res) => {
+  try {
+    const { name, phone, email, date, wishes } = req.body;
+    const insertQuery = `
+      INSERT INTO submission_form (name, phone, email, date, wishes)
+      VALUES ($1, $2, $3, $4, $5)
+    `;
+    await pool.query(insertQuery, [name, phone, email, date, wishes]);
+    res.json({ message: 'Form submitted successfully' });
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    res.status(500).json({ message: 'An error occurred during form submission' });
+  }
+});
+
+// Создание записи обратной связи
+app.post('/feedback', async (req, res) => {
+  try {
+    const { phone, message } = req.body;
+    const insertQuery = `
+      INSERT INTO feedback (phone, message)
+      VALUES ($1, $2)
+    `;
+    await pool.query(insertQuery, [phone, message]);
+    res.json({ message: 'Feedback received successfully' });
+  } catch (error) {
+    console.error('Error receiving feedback:', error);
+    res.status(500).json({ message: 'An error occurred during feedback submission' });
   }
 });
 
